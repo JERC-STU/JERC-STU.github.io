@@ -1,1 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的世界JERC基岩版服务器详细信息</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(45deg, #007bff, #ff4d94);
+            text-align: center;
+            padding: 80px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 64px;
+            letter-spacing: 5px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+            background: -webkit-linear-gradient(#fff, #ffdd57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 3px;
+            background-color: #ffdd57;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 主要内容区域样式 */
+        main {
+            padding: 80px;
+        }
+
+       .server-info {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #ffdd57;
+            border-bottom: 4px solid #ffdd57;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            font-size: 40px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            color: #ccc;
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+       .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+       .feature-list li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 50px;
+        }
+
+       .feature-list li:before {
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: translateY(-50%) scale(1);
+            }
+
+            to {
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+
+        /* 图片样式 */
+       .server-image {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+       .server-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+       .server-image img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 底部样式 */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>我的世界基岩版服务器详细信息</h1>
+    </header>
+    <nav>
+        <a href="#">首页</a>
+        <a href="#">服务器</a>
+        <a href="#">问题</a>
+        <a href="#"></a>
+    </nav>
+    <main>
+        <div class="server-image">
+            <img src="your_server_image.jpg" alt="我的世界基岩版服务器">
+        </div>
+        <div class="server-info">
+            <h2>服务器概述</h2>
+            <p>这是一个充满乐趣和挑战的我的世界基岩版服务器，适合各种玩家群体。无论是生存爱好者、建筑大师还是红石工程师，都能在这里找到属于自己的乐趣。</p>
+            <h2>服务器特点</h2>
+            <ul class="feature-list">
+                <li>丰富的插件支持，提供多种游戏玩法和功能扩展。</li>
+                <li>稳定的服务器性能，确保游戏过程中少卡顿、不掉线。</li>
+                <li>活跃的社区氛围，玩家之间可以友好交流、合作与竞争。</li>
+                <li>定期更新和维护，不断添加新内容和修复漏洞。</li>
+            <ul class="feature-list">
+                <li>禁止使用任何作弊软件或修改游戏数据。</li>
+                <li>尊重其他玩家，不得进行辱骂、骚扰等行为。</li>
+                <li>保护服务器环境，不得随意破坏他人建筑或恶意刷物品。</li>
+                <li>遵守服务器的各种指令和规定，如有疑问可咨询管理员。</li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
 
