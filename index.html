@@ -5,28 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JERC生存服务器官网</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --accent-color: #ffd700;
+            --hover-bg-color: #e8f0fe;
+            --button-gradient-start: #007bff;
+            --button-gradient-end: #0056b3;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--secondary-color);
+            line-height: 1.8;
+            color: var(--text-color);
         }
 
         header {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.6)),
+                url('https://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&word=%E6%9C%AA%E4%B8%96%E7%95%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%99%AF%E8%89%B2%E5%9B%BE&in=2103&cl=2&lm=-1&pn=0&rn=1&di=122324138841&ln=2000&fr=&fmq=&ic=&s=&se=&sme=0&tab=&width=&height=&face=&is=&istype=2#pn0') center/cover no-repeat;
             color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .container {
-            max-width: 800px;
+        header::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+       .container {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 60px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin-top: -90px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+       .container:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         h2 {
-            margin-top: 30px;
+            margin-top: 50px;
+            color: var(--primary-color);
+            border-bottom: 5px solid var(--primary-color);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+        }
+
+        h2 i {
+            margin-right: 20px;
+            font-size: 36px;
+            color: var(--accent-color);
         }
 
         ul {
@@ -35,30 +98,122 @@
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-left: 8px solid var(--primary-color);
+            background-color: var(--hover-bg-color);
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        li:hover {
+            transform: translateX(15px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #d0e1ff;
+        }
+
+        li i {
+            margin-right: 20px;
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+       .server-address {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+       .server-address p {
+            margin-bottom: 15px;
+            flex: 1 0 48%;
+            background-color: var(--hover-bg-color);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+       .server-address p:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+       .server-address i {
+            margin-right: 20px;
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 600px) {
+           .server-address p {
+                flex: 1 0 100%;
+            }
+        }
+
+       .more-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            margin: 30px auto 0;
+            padding: 15px 20px;
+            background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+       .more-button i {
+            margin-left: 10px;
+            font-size: 24px;
+        }
+
+       .more-button:hover {
+            background: linear-gradient(to right, #0062cc, #004085);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>JERC 生存服务器</h1>
+        <h1>JERC 生存服务器官网</h1>
     </header>
     <div class="container">
-        <h2>服务器新闻</h2>
+        <h2><i class="fas fa-bullhorn"></i>服务器新闻</h2>
         <ul>
-            <li>最新消息：暂无</li>
-            <li>活动预告：暂无</li>
+            <li><i class="fas fa-newspaper"></i>最新消息：新网站！</li>
+            <li><i class="fas fa-calendar-check"></i>活动预告：敬请期待</li>
         </ul>
 
-        <h2>服务器地址</h2>
-        <p>IP: hb.frp.one</p>
-        <p>端口: 49875</p>
+        <h2><i class="fas fa-server"></i>服务器地址</h2>
+        <div class="server-address">
+            <p><i class="fas fa-map-marker-alt"></i>IP: hb.frp.one</p>
+            <p><i class="fas fa-portrait"></i>端口: 49875</p>
+        </div>
 
-        <h2>关于服务器</h2>
+        <h2><i class="fas fa-info-circle"></i>关于服务器</h2>
         <p>JERC生存服务器是一个充满乐趣与挑战的《我的世界》基岩版服务器。在这里，你可以与来自五湖四海的玩家一起探索无限的世界，体验原汁原味的生存玩法。</p>
         <p>我们致力于为玩家打造一个公平、友好、积极向上的游戏环境，不断更新和优化服务器内容，让每一位玩家都能在这里找到属于自己的快乐。无论你是新手还是老手，都能在JERC生存服务器中收获难忘的游戏经历。快来加入我们吧！</p>
     </div>
+    <a href="a1.html" class="more-button">更多 <i class="fas fa-arrow-right"></i></a>
+    <br>
 </body>
 
 </html>
