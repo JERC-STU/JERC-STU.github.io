@@ -7,16 +7,26 @@
     <title>JERC 生存服务器官网</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        /* 全局样式 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            /* 添加背景图片示例，记得替换图片地址 */
             background-image: url('your-image-url.jpg'); 
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-color: #f4f4f4;
+            animation: fadeIn 1s ease; /* 添加淡入动画 */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         header {
@@ -24,6 +34,7 @@
             color: white;
             text-align: center;
             padding: 20px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         }
 
        .container {
@@ -34,6 +45,18 @@
             border-radius: 5px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            animation: slideIn 1s ease; /* 添加滑动进入动画 */
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h1,
@@ -45,11 +68,14 @@
             border-bottom: 2px solid #0062cc;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
         }
 
         p {
             line-height: 1.6;
             letter-spacing: 0.5px;
+            color: #555;
         }
 
         ul {
@@ -65,10 +91,12 @@
 
         li i {
             margin-right: 10px;
+            color: #0062cc;
         }
 
        .server-address p {
             margin: 10px 0;
+            color: #555;
         }
 
        .more-button {
@@ -81,6 +109,7 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             font-size: 18px;
+            font-weight: 500;
         }
 
        .more-button i {
@@ -107,6 +136,42 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+       .news-card:hover,
+       .address-card:hover,
+       .about-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+           .container {
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+           .more-button {
+                font-size: 16px;
+            }
+
+           .more-button i {
+                font-size: 20px;
+            }
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #0062cc;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -138,6 +203,9 @@
     </div>
     <a href="a1.html" class="more-button">公告 <i class="fas fa-arrow-right"></i></a>
     <br>
+    <footer>
+        &copy; 2025 JERC 生存服务器. All rights reserved.
+    </footer>
 </body>
 
 </html>
