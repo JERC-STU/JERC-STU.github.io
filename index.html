@@ -2,111 +2,142 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JERC 生存服务器官网</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JERC 生存服务器官网</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* 添加背景图片示例，记得替换图片地址 */
+            background-image: url('your-image-url.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f4f4f4;
+        }
 
-    header {
-      background-color: #0062cc;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+        header {
+            background-color: #0062cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .container {
-      width: 80%;
-      margin: 20px auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
+       .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    h1,
-    h2 {
-      margin-top: 0;
-    }
+        h1,
+        h2 {
+            margin-top: 0;
+        }
 
-    h2 {
-      border-bottom: 2px solid #0062cc;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
+        h2 {
+            border-bottom: 2px solid #0062cc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
+        p {
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
 
-    li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-    li i {
-      margin-right: 10px;
-    }
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
 
-   .server-address p {
-      margin: 10px 0;
-    }
+        li i {
+            margin-right: 10px;
+        }
 
-   .more-button {
-      display: inline-block;
-      background-color: #0062cc;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      font-size: 18px;
-    }
+       .server-address p {
+            margin: 10px 0;
+        }
 
-   .more-button i {
-      margin-left: 10px;
-      font-size: 24px;
-    }
+       .more-button {
+            display: inline-block;
+            background-color: #0062cc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
 
-   .more-button:hover {
-      background: linear-gradient(to right, #0062cc, #004085);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-    }
-  </style>
+       .more-button i {
+            margin-left: 10px;
+            font-size: 24px;
+        }
+
+       .more-button:hover {
+            color: #f0f0f0;
+            background: linear-gradient(to right, #0062cc, #004085);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+       .more-button:hover i {
+            color: #fff;
+        }
+
+       .news-card,
+       .address-card,
+       .about-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <h1>JERC 生存服务器官网</h1>
-  </header>
-  <div class="container">
-    <h2><i class="fas fa-bullhorn"></i>服务器新闻</h2>
-    <ul>
-      <li><i class="fas fa-newspaper"></i>最新消息：服务器纯生存测试开始！如想加入加 Jerryyeee1 好友，进入房间！</li>
-      <li><i class="fas fa-calendar-check"></i>活动预告：敬请期待</li>
-    </ul>
-    <h2><i class="fas fa-server"></i>服务器地址</h2>
-    <div class="server-address">
-      <p><i class="fas fa-map-marker-alt"></i>IP: hb.frp.one</p>
-      <p><i class="fas fa-portrait"></i>端口: 49875</p>
+    <header>
+        <h1>JERC 生存服务器官网</h1>
+    </header>
+    <div class="container">
+        <div class="news-card">
+            <h2><i class="fas fa-bullhorn"></i>服务器新闻</h2>
+            <ul>
+                <li><i class="fas fa-newspaper"></i>最新消息：服务器纯生存测试开始！如想加入加 Jerryyeee1 好友，进入房间！</li>
+                <li><i class="fas fa-calendar-check"></i>活动预告：敬请期待</li>
+            </ul>
+        </div>
+        <div class="address-card">
+            <h2><i class="fas fa-server"></i>服务器地址</h2>
+            <div class="server-address">
+                <p><i class="fas fa-map-marker-alt"></i>IP: hb.frp.one</p>
+                <p><i class="fas fa-portrait"></i>端口: 49875</p>
+            </div>
+        </div>
+        <div class="about-card">
+            <h2><i class="fas fa-info-circle"></i>关于服务器</h2>
+            <p>JERC 生存服务器是一个充满乐趣与挑战的《我的世界》基岩版服务器。在这里，你可以与来自五湖四海的玩家一起探索无限的世界，体验原汁原味的生存玩法。服务器也有官方 QQ 交流群:953959780 欢迎你的加入！</p>
+            <p>我们致力于为玩家打造一个公平、友好、积极向上的游戏环境，不断更新和优化服务器内容，让每一位玩家都能在这里找到属于自己的快乐。无论你是新手还是老手，都能在 JERC 生存服务器中收获难忘的游戏经历。快来加入我们吧！</p>
+        </div>
     </div>
-    <h2><i class="fas fa-info-circle"></i>关于服务器</h2>
-    <p>JERC 生存服务器是一个充满乐趣与挑战的《我的世界》基岩版服务器。在这里，你可以与来自五湖四海的玩家一起探索无限的世界，体验原汁原味的生存玩法。服务器也有官方 QQ 交流群:953959780 欢迎你的加入！</p>
-    <p>我们致力于为玩家打造一个公平、友好、积极向上的游戏环境，不断更新和优化服务器内容，让每一位玩家都能在这里找到属于自己的快乐。无论你是新手还是老手，都能在 JERC 生存服务器中收获难忘的游戏经历。快来加入我们吧！</p>
-  </div>
-  <a href="a1.html" class="more-button">公告 <i class="fas fa-arrow-right"></i></a>
-  <br>
+    <a href="a1.html" class="more-button">公告 <i class="fas fa-arrow-right"></i></a>
+    <br>
 </body>
 
 </html>
