@@ -464,12 +464,6 @@
         document.querySelectorAll('.animated-entrance').forEach(el => {
             observer.observe(el);
         });
-
-        // 模拟在线人数（替换为真实API）
-        setInterval(() => {
-            const playerCount = Math.floor(Math.random() * 50) + 1;
-            document.getElementById('playerCount').textContent = playerCount;
-        }, 5000);
     </script>
     <!-- 引入Font Awesome图标库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
