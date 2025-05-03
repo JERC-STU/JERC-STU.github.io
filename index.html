@@ -2,242 +2,477 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JERC生存服务器 - 无尽冒险，自由生存</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>JERC生存服务器 - 像素世界，无限可能</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 基础样式 & 动画 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: '微软雅黑', sans-serif;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        :root {
+            --primary: #00ffd1;
+            --bg-dark: #1a237e;
+            --bg-light: rgba(26, 35, 126, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.15);
         }
 
         body {
+            min-height: 100vh;
             line-height: 1.6;
-            background: linear-gradient(135deg, #1a237e, #00bcd4);
-            color: white;
+            background: #1a237e;
+            background: linear-gradient(135deg, var(--bg-dark) 20%, #00bcd4 100%);
+            overflow-x: hidden;
         }
 
+        /* 导航栏 */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 35, 126, 0.9);
-            padding: 15px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-dark);
             z-index: 1000;
+        }
+
+        .nav-logo {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            justify-content: flex-end;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
+            gap: 30px;
         }
 
         .nav-links a {
             color: white;
-            text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: #00ffd1;
+        .nav-links a::before {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
         }
 
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* 英雄区域 */
         .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: url('https://via.placeholder.com/1920x1080.png/3a448c/ffffff?text=JERC%E7%94%9F%E5%AD%98%E6%9C%8D%E5%8A%A1%E5%99%A8') center/cover;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080.png/3a448c/ffffff?text=JERC生存服务器') center/cover;
+            filter: brightness(0.7);
+            animation: bg-parallax 20s infinite linear;
         }
 
         .hero-content {
-            padding: 20px;
-            background: rgba(26, 35, 126, 0.8);
-            border-radius: 15px;
+            position: relative;
+            z-index: 10;
+            padding: 40px 60px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-dark);
+        }
+
+        .hero-title {
+            font-size: 56px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 209, 0.3);
+        }
+
+        .hero-desc {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+            opacity: 0.9;
         }
 
         .server-info {
-            font-size: 24px;
-            margin: 20px 0;
-            color: #00ffd1;
+            font-size: 20px;
+            color: white;
+            margin-bottom: 30px;
+            opacity: 0.8;
         }
 
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #00e5c4, #00ffd1);
+            color: var(--bg-dark);
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 255, 209, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 255, 209, 0.3);
+        }
+
+        /* 特色功能 */
         .section {
-            padding: 80px 20px;
+            padding: 100px 40px;
             text-align: center;
         }
 
-        .feature {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 50px;
+        .section-title {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .feature-card {
-            background: rgba(26, 35, 126, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            flex: 1;
-            min-width: 300px;
-            transition: transform 0.3s;
+            padding: 40px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            box-shadow: var(--shadow-dark);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .feature-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 255, 209, 0.2);
         }
 
+        .feature-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* 团队/活动区域 */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .team-member {
-            background: rgba(26, 35, 126, 0.8);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            box-shadow: var(--shadow-dark);
+            text-align: left;
         }
 
-        .download-btn, .contact-btn {
-            display: inline-block;
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary);
+        }
+
+        /* 下载区域 */
+        #download {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             padding: 15px 40px;
-            background: #00ffd1;
-            color: #1a237e;
-            text-decoration: none;
-            border-radius: 30px;
+            background: linear-gradient(45deg, #00e5c4, #00ffd1);
+            color: var(--bg-dark);
+            font-size: 18px;
             font-weight: 600;
-            margin-top: 30px;
-            transition: background 0.3s;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 255, 209, 0.2);
         }
 
-        .download-btn:hover, .contact-btn:hover {
-            background: #00c8a7;
+        .download-link i {
+            font-size: 20px;
         }
 
+        /* 页脚 */
         .footer {
-            background: #1a237e;
-            padding: 50px 20px;
+            padding: 80px 40px;
+            background: var(--bg-dark);
+            color: white;
             text-align: center;
             margin-top: 80px;
         }
 
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .nav-links {
-                justify-content: center;
+            .navbar {
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
-            .hero-content h1 {
-                font-size: 28px;
+
+            .hero-content {
+                padding: 30px 20px;
             }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .feature-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        /* 动态效果 */
+        @keyframes bg-parallax {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        .animated-entrance {
+            opacity: 0;
+            transform: translateY(30px);
         }
     </style>
 </head>
 <body>
+    <!-- 导航栏 -->
     <nav class="navbar">
+        <div class="nav-logo">JERC</div>
         <ul class="nav-links">
             <li><a href="#home">首页</a></li>
             <li><a href="#features">特色功能</a></li>
-            <li><a href="#team">管理团队</a></li>
+            <li><a href="#team">最新活动</a></li>
             <li><a href="#download">客户端下载</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
     </nav>
 
+    <!-- 英雄区域 -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 style="font-size: 48px; color: #00ffd1; margin-bottom: 20px;">JERC生存服务器</h1>
-            <p style="font-size: 24px; margin-bottom: 30px;">开启你的像素生存冒险之旅</p>
+        <div class="hero-bg"></div>
+        <div class="hero-content animated-entrance">
+            <h1 class="hero-title">JERC生存服务器</h1>
+            <p class="hero-desc">探索无限可能的像素世界<br>与全球玩家一起开启生存冒险</p>
             <div class="server-info">
-                IP: <span style="color: white;">hb.frp.one</span><br>
-                端口: <span style="color: white;">49875</span>
+                IP: <span style="color: var(--primary);">hb.frp.one</span><br>
+                端口: <span style="color: var(--primary);">49875</span>
             </div>
-            <a href="#download" class="download-btn">立即加入服务器</a>
+            <a href="#download" class="cta-btn">立即加入服务器</a>
         </div>
     </section>
 
+    <!-- 特色功能 -->
     <section class="section" id="features">
-        <h2 style="font-size: 36px; color: #00ffd1; margin-bottom: 40px;">服务器特色功能</h2>
-        <div class="feature">
-            <div class="feature-card">
-                <h3>大型生存地图</h3>
+        <h2 class="section-title">服务器核心特色</h2>
+        <div class="feature-grid">
+            <div class="fature-card animated-entrance">
+                <i class="fas fa-globe feature-icon"></i>
+                <h3 class="feature-title">超大开放世界</h3>
                 <p>包含超平坦、洞穴、末地等多种地形，支持100+玩家同时在线探索</p>
             </div>
-            <div class="feature-card">
-                <h3>经济交易系统</h3>
+            <div class="feature-card animated-entrance">
+                <i class="fas fa-exchange-alt feature-icon"></i>
+                <h3 class="feature-title">自由经济系统</h3>
                 <p>内置成熟的货币系统，支持玩家间自由交易、商店经营和拍卖行</p>
             </div>
-            <div class="feature-card">
-                <h3>特色副本玩法</h3>
+            <div class="feature-card animated-entrance">
+                <i class="fas fa-trophy feature-icon"></i>
+                <h3 class="feature-title">丰富玩法内容</h3>
                 <p>定期更新BOSS副本、限时活动和PVP竞技场，保持游戏新鲜感</p>
             </div>
         </div>
     </section>
 
+    <!-- 团队/活动区域（示例内容，可替换为真实团队信息） -->
     <section class="section" id="team">
-        <h2 style="font-size: 36px; color: #00ffd1; margin-bottom: 40px;">服务器活动</h2>
+        <h2 class="section-title">最新活动与团队</h2>
         <div class="team-grid">
-            <div class="team-member">
-                <h3>测试</h3>
-                <p>①整体测试接近尾声，现在是音乐，可以下载模组和在设置里调整，模组链接https://www.123865.com/s/fZvtVv-ObLyh?提取码：RMZr</p>
+            <div class="team-member animated-entrance">
+                <h3>夏日狂欢测试</h3>
+                <p>①整体测试接近尾声，现在是音乐，可以下载模组和在设置里调整，<br>模组链接：<a href="https://www.123865.com/s/fZvtVv-ObLyh?提取码：RMZr" style="color: var(--primary);">点击下载</a></p>
             </div>
-            <div class="team-member">
-                <h3>等待编辑</h3>
-                <p>等待编辑</p>
-            </div>
-            <div class="team-member">
-                <h3>等待编辑</h3>
-                <p>等待编辑</p>
+            <div class="team-member animated-entrance">
+                <h3>管理团队 - 队长</h3>
+                <img src="https://via.placeholder.com/200x200.png/ffffff/000000?text=队长头像" alt="队长" class="member-avatar">
+                <p>负责服务器整体运营与玩法设计，拥有5年MC服务器管理经验</p>
             </div>
         </div>
     </section>
 
+    <!-- 下载区域 -->
     <section class="section" id="download">
-        <h2 style="font-size: 36px; color: #00ffd1; margin-bottom: 40px;">客户端下载</h2>
-        <p>基岩版1.21.72</p>
-        <a href="#contact" class="download-btn">下载最新客户端</a>
-        <p style="margin-top: 20px; color: #ffffff80;">或直接在游戏内添加服务器</p>
+        <h2 class="section-title">客户端下载</h2>
+        <p>支持基岩版 1.21.72 及以上版本</p>
+        <a href="#contact" class="download-link">
+            <i class="fas fa-download"></i> 下载最新客户端
+        </a>
+        <p style="margin-top: 20px; color: rgba(255, 255, 255, 0.7);">或直接在游戏内添加服务器：<br><strong>IP: hb.frp.one　端口: 49875</strong></p>
     </section>
 
+    <!-- 联系我们 -->
     <section class="section" id="contact">
-        <h2 style="font-size: 36px; color: #00ffd1; margin-bottom: 40px;">联系我们</h2>
+        <h2 class="section-title">联系与支持</h2>
         <p>如有任何问题或建议，欢迎通过以下方式联系我们</p>
-        <a href="1878804726@qq.com" class="contact-btn">发送邮件咨询</a>
-        <p style="margin-top: 20px; color: #ffffff80;">QQ群：953959780　　Discord：jerc_server</p>
+        <div class="social-links">
+            <a href="https://jq.qq.com/?_wv=1027&k=5Lm9Z7x0" target="_blank" class="fab fa-qq"></a>
+            <a href="https://discord.gg/jerc_server" target="_blank" class="fab fa-discord"></a>
+        </div>
+        <p style="margin-top: 30px; color: rgba(255, 255, 255, 0.7);">
+            QQ群：953959780　　Discord：jerc_server<br>
+            邮箱：1878804726@qq.com
+        </p>
     </section>
 
+    <!-- 页脚 -->
     <footer class="footer">
-        <p>© 2025 JERC生存服务器 版权所有</p>
-        <p>服务器状态：在线人数 <span id="playerCount">加载中...</span>　　版本：1.21.70</p>
+        <div class="footer-top">
+            <div class="footer-logo">JERC</div>
+            <div class="social-links">
+                <a href="#" class="fab fa-qq"></a>
+                <a href="#" class="fab fa-discord"></a>
+                <a href="#" class="fab fa-twitter"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 JERC生存服务器 版权所有</p>
+            <p>服务器状态：在线人数 <span id="playerCount">加载中...</span>　　版本：1.21.70</p>
+        </div>
     </footer>
 
+    <!-- 滚动动画 & 实时人数 -->
     <script>
-        // 模拟服务器状态获取（需替换为实际API）
+        // 滚动加载动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('animated-entrance');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animated-entrance').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 模拟在线人数（替换为真实API）
         setInterval(() => {
-            const playerCount = Math.floor(Math.random() * 50) + 1; // 模拟1-50人在线
+            const playerCount = Math.floor(Math.random() * 50) + 1;
             document.getElementById('playerCount').textContent = playerCount;
         }, 5000);
-
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(26, 35, 126, 0.95)';
-            } else {
-                navbar.style.backgroundColor = 'rgba(26, 35, 126, 0.9)';
-            }
-        });
     </script>
+    <!-- 引入Font Awesome图标库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 </body>
 </html>
