@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOXY公会管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+        }
+
+        .header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .inbox {
+            position: relative;
+        }
+
+        .inbox-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .inbox-notify {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guild-name {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .application-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .application-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .application-form input {
+            padding: 8px 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        .application-form button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .approval-list {
+            margin-top: 20px;
+        }
+
+        .approval-list h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .approval-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .approval-table th,
+        .approval-table td {
+            border: 1px solid #ecf0f1;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .approval-table th {
+            background: #3498db;
+            color: white;
+        }
+
+        .approval-table tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .broadcast-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .broadcast-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .broadcast-form textarea {
+            padding: 8px 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            flex: 1;
+            resize: vertical;
+        }
+
+        .broadcast-form button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>jerc我的世界服务器</h1>
+        <div class="inbox">
+            <i class="inbox-icon">&#x1F4E5;</i> <!-- 收件箱图标 -->
+            <span class="inbox-notify">3</span> <!-- 未读消息提示 -->
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="guild-name">BOXY公会管理系统</div>
+
+        <div class="application-section">
+            <h3>玩家加入申请</h3>
+            <form class="application-form">
+                <input type="text" placeholder="输入玩家ID">
+                <button type="submit">提交申请</button>
+            </form>
+
+            <div class="approval-list">
+                <h3>申请批准列表</h3>
+                <table class="approval-table">
+                    <tr>
+                        <th>玩家ID</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>玩家A</td>
+                        <td><button>批准</button></td>
+                    </tr>
+                    <tr>
+                        <td>玩家B</td>
+                        <td><button>批准</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="broadcast-section">
+            <h3>发送广播</h3>
+            <form class="broadcast-form">
+                <textarea placeholder="输入广播内容" rows="3"></textarea>
+                <button type="submit">发送</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
